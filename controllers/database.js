@@ -72,6 +72,7 @@ module.exports.saveOrders = function(req,res){
         var customers = theDatabase.collection('CUSTOMERS');
         var billings = theDatabase.collection('BILLINGS');
         var shippings = theDatabase.collection('SHIPPINGS');
+        var orders = theDatabase.collection('ORDERS');
 
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
@@ -80,14 +81,14 @@ module.exports.saveOrders = function(req,res){
         //     city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
         //
-        billings.insert({cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.boy.expDate,cardname:req.boy.cardname});
+        billings.insert({cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
         // //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         // //   this request and loop  is to display content in the  console log
         //
-        // shippings.insert({firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
-        //     city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
+        shippings.insert({firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
+            city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
 
-        // var orders = theDatabase.collection('ORDERS');
+        //
         // orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
         res.render('successSave');
