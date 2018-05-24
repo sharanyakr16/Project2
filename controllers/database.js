@@ -68,16 +68,17 @@ module.exports.saveOrders = function(req,res){
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
         var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
+        var ordersID = Math.floor((Math.random() * 1000000000000) + 1);
         // //get handle to the databse
         var theDatabase = client.db('heroku_mgjkmjm6');
 
 
         //get collection of routes
         var customers = theDatabase.collection('CUSTOMERS');
-        customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
-            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
+        customers.insert({_id:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
+            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,email:req.body.cemail,telephone:req.body.Btelephone});
         var billings = theDatabase.collection('BILLINGS');
-        billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
+        billings.insert({_id:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
         var shippings = theDatabase.collection('SHIPPINGS');
         var orders = theDatabase.collection('ORDERS');
 
@@ -91,11 +92,11 @@ module.exports.saveOrders = function(req,res){
         // //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         // //   this request and loop  is to display content in the  console log
         //
-        shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
-            city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
+        shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,shippingAddress:req.body.Saddress,address2:req.body.Saddress2,
+            Shipping_CITY:req.body.Scity,SHIPPING_STATE:req.body.Sstate,SHIPPING_ZIP:req.body.Szipcode,telephone:req.body.Stelephone});
 
         //
-        orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
+        orders.insert({_id:ordersID,CUSTOMER_ID:customerID,BILLING_ID:billingID,SHIPPING_ID:shippingID,DATE:Date.now()});
 
         //res.render('successSave', {results: req.body});
         orders.find().toArray(function (err, docs) {
