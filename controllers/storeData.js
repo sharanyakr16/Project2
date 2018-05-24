@@ -26,15 +26,6 @@ module.exports.storeData = function (req, res) {
 
 
         var CUSTOMERS = db.collection('CUSTOMERS');
-        var BILLING = db.collection('BILLINGS');
-        var SHIPPING = db.collection('SHIPPINGS');
-        var ORDERS = db.collection('ORDERS');
-
-
-        /*CUSTOMERS.deleteMany({}, function (err, result) {
-        if (err) throw err;
-        });*/
-
         var customerdata = {
             _id: customerID,
             FIRSTNAME: req.body.Bfirstname,
@@ -45,6 +36,16 @@ module.exports.storeData = function (req, res) {
             ZIP: req.body.Bzipcode,
             PHONE: req.body.Btelephone
         };
+        var BILLING = db.collection('BILLINGS');
+        var SHIPPING = db.collection('SHIPPINGS');
+        var ORDERS = db.collection('ORDERS');
+
+
+        /*CUSTOMERS.deleteMany({}, function (err, result) {
+        if (err) throw err;
+        });*/
+
+
         CUSTOMERS.insertOne(customerdata, function (err, result) {
                 if (err) throw "Customer error";
             }
