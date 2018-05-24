@@ -76,7 +76,7 @@ module.exports.saveOrders = function(req,res){
 
         //customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2, city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
-        billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
+        //billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
         shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2, city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
         orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
