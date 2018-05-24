@@ -82,6 +82,7 @@ module.exports.saveOrders = function(req,res){
         shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
             city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
         orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
+        
 
         response.render('successSave', {results: req.body});
 
