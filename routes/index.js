@@ -22,7 +22,7 @@ router.post('/storeData', function(req, res, next) {
     res.send("order succesfully received: " + value_name);
     res.send("order succesfully received: " + value_name1);
 });
-
+  
 
 
 
