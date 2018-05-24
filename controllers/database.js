@@ -69,21 +69,18 @@ module.exports.saveOrders = function(req,res){
 
 
         //get collection of routes
-        //var customers = theDatabase.collection('CUSTOMERS');
+        var customers = theDatabase.collection('CUSTOMERS');
         var billings = theDatabase.collection('BILLINGS');
         var shippings = theDatabase.collection('SHIPPINGS');
         var orders = theDatabase.collection('ORDERS');
 
-        //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
-        //   this request and loop  is to display content in the  console log
 
-        // customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
-        //     city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
+        customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
+            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
 
         billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
-        //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
-        //   this request and loop  is to display content in the  console log
+
 
         shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
             city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
