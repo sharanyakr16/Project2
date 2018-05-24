@@ -7,7 +7,7 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds2
 module.exports.storeData = function (req, res) {
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
-        if (err) throw err;
+        if (err) throw 'Connection Error';
         /**************************
          * IMPORTANT:  this is how you generate  a random number for  3IDs that
          * you will need for the collections cusomerID, billinID and   shippingID
@@ -44,7 +44,7 @@ module.exports.storeData = function (req, res) {
             PHONE: req.body.Btelephone
         };
         CUSTOMERS.insertOne(customerdata, function (err, result) {
-                if (err) throw err;
+                if (err) throw "Customer error";
             }
         )
 
@@ -58,7 +58,7 @@ module.exports.storeData = function (req, res) {
             CREDITCARDSECURITYNUM: req.body.cvv
         };
         BILLING.insertOne(billingdata, function (err, result) {
-                if (err) throw err;
+                if (err) throw "Billing error";
             }
         )
 
@@ -71,7 +71,7 @@ module.exports.storeData = function (req, res) {
             SHIPPING_ZIP: req.body.zipcode
         };
         SHIPPING.insertOne(shippingdata, function (err, result) {
-                if (err) throw err;
+                if (err) throw "Shipping error";
             }
         )
 
@@ -84,7 +84,7 @@ module.exports.storeData = function (req, res) {
 
         };
         ORDERS.insertOne(ordersdata, function (err, result) {
-                if (err) throw err;
+                if (err) throw "No Success";
             res.render('successSave');
             }
         )
