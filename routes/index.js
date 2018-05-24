@@ -41,5 +41,6 @@ router.post('/storeData', controllerMongoCollection.saveOrders);
 //***** mongodb get all of the Routes in Routes collection w
 //      and Render information iwith an ejs view
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
+router.get('/getSavedOrder', controllerMongoCollection.getSavedOrder);
 
 module.exports = router;

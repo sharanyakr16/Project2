@@ -57,6 +57,10 @@ module.exports.getAllOrders =  function (request, response) {
         });
     });//end of connect
 };//end function
+module.exports.getSavedOrder =  function (request, response) {
+
+
+};//end function
 module.exports.saveOrders = function(req,res){
     mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
         if(err) throw "Connection Error";
