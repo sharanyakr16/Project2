@@ -97,7 +97,13 @@ module.exports.saveOrders = function(req,res){
         //
         orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
-        res.render('successSave', {results: req.body});
+        //res.render('successSave', {results: req.body});
+        orders.find().toArray(function (err, docs) {
+            if(err) throw err;
+
+            res.render('successSave', {results: docs});
+
+        });
 
         //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
         //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
