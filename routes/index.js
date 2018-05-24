@@ -6,7 +6,7 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds2
 
 
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
-var controllerMongoSaveCollection = require('../controllers/storeData');
+
 
 
 
