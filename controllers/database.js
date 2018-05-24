@@ -72,7 +72,7 @@ module.exports.saveOrders = function(req,res){
         //var customers = theDatabase.collection('CUSTOMERS');
         var billings = theDatabase.collection('BILLINGS');
         var shippings = theDatabase.collection('SHIPPINGS');
-        //var orders = theDatabase.collection('ORDERS');
+        var orders = theDatabase.collection('ORDERS');
 
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
@@ -89,9 +89,9 @@ module.exports.saveOrders = function(req,res){
             city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
 
 
-        // orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
+        orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
-        response.render('successSave');
+        response.render('successSave', {results: req.body});
 
         //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
         //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
