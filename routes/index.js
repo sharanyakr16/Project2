@@ -19,7 +19,7 @@ router.post('/storeData', function(req, res, next) {
 //expecting data variable called order--retrieve value using body-parser
     var value_name = req.body.order; //retrieve the data associated with order
 
-    res.send("shipping succesfully received: " + value_name[0]+" "+value_name[1]);
+    res.send("shipping succesfully received: " + value_name);
 
 });
 
