@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
 //     //res.send("shipping succesfully received: " + value_name+ " "+value_name_2);
 //
 // });
-router.post('/storeData', controllerMongoSaveCollection.storeData);
+router.post('/storeData', controllerMongoCollection.saveOrders);
 
 
 
