@@ -6,8 +6,10 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds2
 
 module.exports.storeData = function (req, res) {
 
-    mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
+    mongodb.MongoClient.connect(mongoDBURI, function (err, client) {
         if (err) throw 'Connection Error';
+
+        var db = client.db('heroku_mgjkmjm6');
         /**************************
          * IMPORTANT:  this is how you generate  a random number for  3IDs that
          * you will need for the collections cusomerID, billinID and   shippingID
