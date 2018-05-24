@@ -6,6 +6,7 @@ var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds2
 
 
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
+var controllerMongoSaveollection = require('../controllers/storeData');
 
 
 
@@ -30,7 +31,7 @@ router.get('/', function(req, res, next) {
 //     //res.send("shipping succesfully received: " + value_name+ " "+value_name_2);
 //
 // });
-router.post('/storeData', controllerMongoCollection.saveOrders);
+router.post('/storeData', controllerMongoSaveollection.storeData);
 
 
 
