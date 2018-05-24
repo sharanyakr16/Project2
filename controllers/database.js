@@ -75,8 +75,14 @@ module.exports.saveOrders = function(req,res){
         var orders = theDatabase.collection('ORDERS');
 
 
-        customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
-            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
+        var customerdocument = {customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
+            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone};
+        customers.insert(customerdocument, function(err, records){
+            console.log("Record added as "+records[0]._id);
+            response.render('successSave', {results: req.body});
+        });
+
+
 
 
         billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
