@@ -78,7 +78,7 @@ module.exports.saveOrders = function(req,res){
         //   this request and loop  is to display content in the  console log
 
         //customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
-            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
+            //city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
         //
         //billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
