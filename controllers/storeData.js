@@ -83,7 +83,7 @@ module.exports.storeData = function (req, res) {
 
 
         };
-        SHIPPING.insertOne(shippingdata, function (err, result) {
+        ORDERS.insertOne(ordersdata, function (err, result) {
                 if (err) throw err;
             res.render('successSave');
             }
