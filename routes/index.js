@@ -17,8 +17,15 @@ router.get('/', function(req, res, next) {
 
 router.post('/storeData', function(req, res, next) {
 //expecting data variable called order--retrieve value using body-parser
+    //retrieve the data associated with order
     var value_name = req.body.firstname;
-    var value_name_2 = req.body.lastname;//retrieve the data associated with order
+    var value_name_2 = req.body.lastname;
+    // var value_name = req.body.address;
+    // var value_name_2 = req.body.address2;
+    // var value_name = req.body.city;
+    // var value_name_2 = req.body.state;
+    // var value_name = req.body.zipcode;
+    // var value_name_2 = req.body.telephone;
 
     res.send("shipping succesfully received: " + value_name+ " "+value_name_2);
 

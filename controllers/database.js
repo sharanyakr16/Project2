@@ -57,3 +57,53 @@ module.exports.getAllOrders =  function (request, response) {
         });
     });//end of connect
 };//end function
+module.exports.saveOrders = function(req,res){
+    mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
+        if(err) throw err;
+
+
+        //get handle to the databse
+        var theDatabase = client.db('heroku_mgjkmjm6');
+
+
+        //get collection of routes
+        var billings = theDatabase.collection('BILLINGS');
+
+        var value_name1 = req.body.firstname;
+        var value_name2 = req.body.lastname;
+        var value_name3 = req.body.address;
+        var value_name4 = req.body.address2;
+        var value_name5 = req.body.city;
+        var value_name6 = req.body.state;
+        var value_name7 = req.body.zipcode;
+        var value_name8 = req.body.telephone;
+        //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
+        //   this request and loop  is to display content in the  console log
+
+        billings.insert({firstname:value_name1,lastname:value_name2,address:value_name3,address2:value_name4,city:value_name5,state:value_name6,zipcode:value_name7,telephone:value_name8});
+        res.render('successSave');
+
+
+        //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
+        //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
+        // Orders.find().toArray(function (err, docs) {
+        //     if(err) throw err;
+        //
+        //     response.render('getAllOrders', {results: docs});
+        //
+        // });
+
+
+        //Showing in comments here some alternative read (find) requests
+        //this gets Routes where frequency>=10 and sorts by name
+        // Routes.find({ "frequency": { "$gte": 10 } }).sort({ name: 1 }).toArray(function (err, docs) {
+        // this sorts all the Routes by name
+        //  Routes.find().sort({ name: 1 }).toArray(fu namenction (err, docs) {
+
+
+        //close connection when your app is terminating.
+        client.close(function (err) {
+            if(err) throw err;
+        });
+    });
+};
