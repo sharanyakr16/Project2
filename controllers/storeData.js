@@ -1,15 +1,10 @@
-var express = require('express');
-var router = express.Router();
+
 var mongodb = require('mongodb');
 var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds225840.mlab.com:25840/heroku_mgjkmjm6';
-//to process data sent in on request need body-parser module
-var bodyParser = require('body-parser');
-var path = require('path'); //to work with separtors on any OS including Windows
-var querystring = require('querystring'); //for use in GET Query string of form URI/path?name=value
-router.use(bodyParser.json()); // for parsing application/json
-router.use(bodyParser.urlencoded({extended: true})); // for parsing application/x-www-form-urlencode
 
-module.exports.storeData = function (req, res, next) {
+
+
+module.exports.storeData = function (req, res) {
 
     mongodb.MongoClient.connect(mongoDBURI, function (err, db) {
         if (err) throw err;
