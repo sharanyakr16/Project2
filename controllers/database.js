@@ -61,10 +61,10 @@ module.exports.saveOrders = function(req,res){
     mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
         if(err) throw err;
 
-        var customerID = Math.floor((Math.random() * 1000000000000) + 1);
-        var billingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-        //get handle to the databse
+        // var customerID = Math.floor((Math.random() * 1000000000000) + 1);
+        // var billingID = Math.floor((Math.random() * 1000000000000) + 1);
+        // var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
+        // //get handle to the databse
         var theDatabase = client.db('heroku_mgjkmjm6');
 
 
@@ -74,19 +74,19 @@ module.exports.saveOrders = function(req,res){
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
 
-        customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
+        customers.insert({firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
             city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
         var billings = theDatabase.collection('BILLINGS');
-        billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.boy.expDate,cardname:req.boy.cardname});
+        billings.insert({cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.boy.expDate,cardname:req.boy.cardname});
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
         var shippings = theDatabase.collection('SHIPPINGS');
-        shippings.insert({shippingID:shippingID,firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
+        shippings.insert({firstname:req.body.Sfirstname,lastname:req.body.Slastname,address:req.body.Saddress,address2:req.body.Saddress2,
             city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
 
-        var orders = theDatabase.collection('ORDERS');
-        orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
+        // var orders = theDatabase.collection('ORDERS');
+        // orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
         res.render('successSave');
 
