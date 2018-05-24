@@ -59,7 +59,7 @@ module.exports.getAllOrders =  function (request, response) {
 };//end function
 module.exports.saveOrders = function(req,res){
     mongodb.MongoClient.connect(mongoDBURI, function(err,  client) {
-        if(err) throw err;
+        if(err) throw "Connection Error";
 
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
@@ -77,11 +77,11 @@ module.exports.saveOrders = function(req,res){
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
 
-        //customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
-            //city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
+        customers.insert({customerID:customerID,firstname:req.body.Bfirstname,lastname:req.body.Blastname,address:req.body.Baddress,address2:req.body.Baddress2,
+            city:req.body.Bcity,state:req.body.Bstate,zipcode:req.body.Bzipcode,telephone:req.body.Btelephone});
 
         //
-        //billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
+        billings.insert({billingID:billingID,customerID:customerID,cardnumber:req.body.cardnumber,cvv:req.body.cvv,cardExp:req.body.expDate,cardname:req.body.cardname});
         // //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         // //   this request and loop  is to display content in the  console log
         //
@@ -89,7 +89,7 @@ module.exports.saveOrders = function(req,res){
             city:req.body.Scity,state:req.body.Sstate,zipcode:req.body.Szipcode,telephone:req.body.Stelephone});
 
         //
-        //orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
+        orders.insert({customerID:customerID,billingID:billingID,shippingID:shippingID,date:Date.now()});
 
         response.render('successSave', {results: req.body});
 
@@ -112,7 +112,7 @@ module.exports.saveOrders = function(req,res){
 
         //close connection when your app is terminating.
         client.close(function (err) {
-            if(err) throw err;
+            if(err) throw "Disconnection eror";
         });
     });
 };
