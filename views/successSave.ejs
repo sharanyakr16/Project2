@@ -9,11 +9,12 @@
 
 <h4>Order Submitted Successfully. </h4>
 <p>Please keep the Order ID for your reference:</p>
-<% results.forEach(function(r) { %>
-<li>Order ID:<%=r.CUSTOMER_ID%>+1</li>
-<li>Shipping ID:<%=r.SHIPPING_ID%></li>
-<li>Billing ID:<%=r.BILLING_ID%></li>
-<% }); %>
+<ul>
+
+<li>Order ID:<%=results.CUSTOMER_ID%></li>
+<li>Shipping ID:<%=results.SHIPPING_ID%></li>
+<li>Billing ID:<%=results.BILLING_ID%></li>
+</ul>
 <p>Your order will be received in 5-7 working days.</p>
 
 </body>
