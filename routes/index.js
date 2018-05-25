@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 mongodb = require('mongodb');
 
-var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds225840.mlab.com:25840/heroku_mgjkmjm6';
+var mongoDBURI = process.env.MONGODB_URI || 'mongodb://sharanya16:sAsh5+enkA@ds225840.mlab.com:25840/heroku_mgjkmjm6';//connect to mongoDB
 
 
 var controllerMongoCollection = require('../controllers/database'); //load controller code dealing with database mongodb and Routes collection
@@ -42,5 +42,5 @@ router.post('/storeData', controllerMongoCollection.saveOrders);
 //      and Render information iwith an ejs view
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
 
-router.get('/successSave', controllerMongoCollection.saveOrders);
+router.get('/storeData', controllerMongoCollection.saveOrders);
 module.exports = router;

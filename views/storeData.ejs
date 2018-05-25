@@ -10,13 +10,13 @@
 <h4>Order Submitted Successfully. </h4>
 <p>Please keep the following ID for your reference:</p>
 <ul>
-<% results.forEach(function(r) { %>
-<li>ORDER ID:<%=r.CUSTOMER_ID%></li>
-<li>BILLING ID:<%=r.BILLING_ID%></li>
-<li>SHIPPING ID:<%=r.SHIPPING_ID%></li>
+    <% results.forEach(function(r) { %>
+    <li>ORDER ID:<%=r.CUSTOMER_ID%></li>
+    <li>BILLING ID:<%=r.BILLING_ID%></li>
+    <li>SHIPPING ID:<%=r.SHIPPING_ID%></li>
 
-<br/> <br/>
-<% }); %>
+    <br/> <br/>
+    <% }); %>
 </ul>
 <p>Your order will be received in 5-7 working days.</p>
 

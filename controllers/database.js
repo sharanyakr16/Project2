@@ -68,7 +68,7 @@ module.exports.saveOrders = function(req,res){
         var customerID = Math.floor((Math.random() * 1000000000000) + 1);
         var billingID = Math.floor((Math.random() * 1000000000000) + 1);
         var shippingID = Math.floor((Math.random() * 1000000000000) + 1);
-        var ordersID = Math.floor((Math.random() * 1000000000000) + 1);
+        var orderID = Math.floor((Math.random() * 1000000000000) + 1);
         // //get handle to the databse
         var theDatabase = client.db('heroku_mgjkmjm6');
 
@@ -96,7 +96,7 @@ module.exports.saveOrders = function(req,res){
             Shipping_CITY:req.body.Scity,SHIPPING_STATE:req.body.Sstate,SHIPPING_ZIP:req.body.Szipcode,telephone:req.body.Stelephone});
 
         //
-        orders.insert({_id:ordersID,CUSTOMER_ID:customerID,BILLING_ID:billingID,SHIPPING_ID:shippingID,DATE:Date.now()});
+        orders.insert({ORDER_ID:orderID,CUSTOMER_ID:customerID,BILLING_ID:billingID,SHIPPING_ID:shippingID,DATE:Date.now()});
 
         //res.render('successSave', {results: req.body});
         orders.find().toArray(function (err, docs) {
