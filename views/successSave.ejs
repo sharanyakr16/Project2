@@ -7,13 +7,14 @@
 </head>
 <body>
 
-<h4>Order Submitted Successfully: </h4>
+<h4>Order Submitted Successfully. </h4>
+<p>Please keep the Order ID for your reference:</p>
 <% results.forEach(function(r) { %>
-<li><%=r.ordersID%></li>
-
-<br/> <br/>
+<li>Order ID:<%=r.CUSTOMER_ID%>+1</li>
+<li>Shipping ID:<%=r.SHIPPING_ID%></li>
+<li>Billing ID:<%=r.BILLING_ID%></li>
 <% }); %>
-
+<p>Your order will be received in 5-7 working days.</p>
 
 </body>
 </html>
