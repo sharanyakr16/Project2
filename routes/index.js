@@ -31,7 +31,8 @@ router.get('/', function(req, res, next) {
 //     //res.send("shipping succesfully received: " + value_name+ " "+value_name_2);
 //
 // });
-router.post('/storeData', controllerMongoCollection.saveOrders);
+
+
 
 
 
@@ -41,6 +42,7 @@ router.post('/storeData', controllerMongoCollection.saveOrders);
 //***** mongodb get all of the Routes in Routes collection w
 //      and Render information iwith an ejs view
 router.get('/getAllOrders', controllerMongoCollection.getAllOrders);
-
+router.post('/storeData', controllerMongoCollection.saveOrders);
+// mongodb get all of the  in Routes collection and renders information into storeData ejs file
 router.get('/storeData', controllerMongoCollection.saveOrders);
 module.exports = router;
