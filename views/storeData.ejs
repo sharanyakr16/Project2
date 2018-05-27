@@ -6,17 +6,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-
+<!--Dispaly successful order information-->
 <h4>Order Submitted Successfully. </h4>
 <p>Please keep the following ID for your reference:</p>
 <ul>
-    <% results.forEach(function(r) { %>
-    <li>ORDER ID:<%=r.CUSTOMER_ID%></li>
-    <li>BILLING ID:<%=r.BILLING_ID%></li>
-    <li>SHIPPING ID:<%=r.SHIPPING_ID%></li>
-
+{{results}}.ORDER_ID
+    
     <br/> <br/>
-    <% }); %>
+
 </ul>
 <p>Your order will be received in 5-7 working days.</p>
 
