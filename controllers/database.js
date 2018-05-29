@@ -20,12 +20,12 @@ module.exports.getAllOrders =  function (request, response) {
 
 
         //get collection of routes
-        var Orders = theDatabase.collection('ORDERS');
+        var routes = theDatabase.collection('ROUTES');
 
-
+       routes.insert({ORDER_ID:orderID,CUSTOMER_ID:customerID,BILLING_ID:billingID,SHIPPING_ID:shippingID,DATE:Date.now()});
         //FIRST showing you one way of making request for ALL routes and cycle through with a forEach loop on returned Cursor
         //   this request and loop  is to display content in the  console log
-        var c = Orders.find({}); //
+        var c = routes.find({}); //
 
         c.forEach(
             function(myDoc) {
@@ -36,12 +36,13 @@ module.exports.getAllOrders =  function (request, response) {
 
         //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
         //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
-        Orders.find().toArray(function (err, docs) {
+        routes.find(({ORDER_ID:orderID}).toArray(function (err, docs) {
             if(err) throw err;
 
             response.render('getAllOrders', {results: docs});
 
         });
+       
 
 
         //Showing in comments here some alternative read (find) requests
@@ -106,7 +107,7 @@ module.exports.saveOrders = function(req,res){
 
         //res.render('successSave', {results: req.body});
         //show a way to make request for ALL orders  and simply collect the  documents as an
-        //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
+        //   array called docs that you  forward to the  storeData.ejs view for use there
         orders.find().toArray(function (err, docs) {
             if(err) throw err;
 
@@ -114,14 +115,6 @@ module.exports.saveOrders = function(req,res){
 
         });
 
-        //SECOND -show another way to make request for ALL Routes  and simply collect the  documents as an
-        //   array called docs that you  forward to the  getAllRoutes.ejs view for use there
-        // Orders.find().toArray(function (err, docs) {
-        //     if(err) throw err;
-        //
-        //     response.render('getAllOrders', {results: docs});
-        //
-        // });
 
 
         //Showing in comments here some alternative read (find) requests
