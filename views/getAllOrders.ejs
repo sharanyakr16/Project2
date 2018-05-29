@@ -9,11 +9,19 @@
 <div class="container">
     <h2>Database Results getting Routes </h2>
 
-  <p>{{results}}</p>
 
 
 
-</ul>
+    <ul>
+        <% results.forEach(function(r) { %>
+        <li>ORDER_ID:<%=r.ORDER_ID%></li>
+        <li>BILLING_ID:<%=r.BILLING_ID%></li>
+        <li>SHIPPING_ID:<%=r.SHIPPING_ID%></li>
+
+        <br/> <br/>
+        <% }); %>
+    </ul>
+
 </div>
 
 </body>

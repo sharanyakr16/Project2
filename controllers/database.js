@@ -42,7 +42,7 @@ module.exports.getAllOrders =  function (request, response) {
             response.render('getAllOrders', {results: docs});
 
         });
-       
+
 
 
         //Showing in comments here some alternative read (find) requests
